@@ -61,21 +61,6 @@ Sends an SMS to the specified number.
 
 Retrieves the account status including the balance and active status.
 
-### saveContact(to, options)
-
-Saves a contact in your Notify.lk account.
-
-### getSMSHistory(limit)
-
-Retrieves the SMS history with an optional limit on the number of records.
-
-### addContact(contact, options)
-
-Adds a new contact to your Notify.lk account. Useful for managing your contact list.
-
-*   **contact:** _object_ - The contact details to add. Includes `name` and `phone` properties.
-*   **options:** _object_ - Additional options for adding the contact (optional).
-
 Examples
 --------
 
@@ -99,20 +84,7 @@ notify.getAccountStatus()
     .then(status => console.log('Account Status:', status))
     .catch(error => console.error('Error Fetching Account Status:', error));
 ```
-### 3\. Saving a New Contact
-
-You can save a new contact in your Notify.lk account with additional details:
-```ts
-notify.saveContact('9471XXXXXXX', {
-    contact_fname: 'John',
-    contact_lname: 'Doe',
-    contact_email: 'john.doe@example.com',
-    contact_address: '123 Example St, City, Country'
-})
-  .then(response => console.log('Contact Saved:', response))
-  .catch(error => console.error('Error Saving Contact:', error));
-```
-### 4\. Sending SMS with Unicode Characters
+### 3\. Sending SMS with Unicode Characters
 
 To send an SMS containing Unicode characters (e.g., emojis, non-Latin scripts), include the `type` option:
 ```ts
@@ -120,15 +92,7 @@ notify.sendSMS('9471XXXXXXX', 'Hello from NotifyLK 😊', { type: 'unicode' })
     .then(response => console.log('Unicode SMS Sent:', response))
     .catch(error => console.error('Error Sending Unicode SMS:', error));
 ```
-### 5\. Retrieving SMS History
-
-This example retrieves the last 10 SMS messages sent using your account:
-```ts
-notify.getSMSHistory(10)
-    .then(history => console.log('SMS History:', history))
-    .catch(error => console.error('Error Fetching SMS History:', error));
-```
-### 6\. Bulk SMS Sending
+### 4\. Bulk SMS Sending
 
 Sending SMS to multiple recipients in a loop:
 ```ts
@@ -141,7 +105,7 @@ numbers.forEach(number => {
         .catch(error => console.error(`Error Sending SMS to ${number}:`, error));
     });
 ```
-### 7\. Handling SMS Errors Gracefully
+### 5\. Handling SMS Errors Gracefully
 
 This example demonstrates how to handle errors, such as invalid phone numbers or API issues:
 ```ts
@@ -155,7 +119,7 @@ notify.sendSMS('invalid_number', 'This message will fail')
         }
     });
 ```
-### 8\. Scheduling SMS for Future Delivery
+### 6\. Scheduling SMS for Future Delivery
 
 If Notify.lk supports scheduling (hypothetical, as the real API may not), you could do something like this:
 ```ts
